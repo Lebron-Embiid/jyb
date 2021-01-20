@@ -59,7 +59,7 @@
         </view>
       </view>
     </view>
-    <view class="title">农场信息</view>
+    <view class="title">教育信息</view>
     <!-- <view class="form_item">
       <text class="form_txt">举办方企业名称</text>
       <view class="form_content"><input placeholder="请输入举办方企业名称" value="{{company_name}}" data-key="company_name" bindinput="getInputVal"></input></view>
@@ -69,8 +69,8 @@
       <view class="form_content"><input placeholder="请输入举办方名称" value="{{person_name}}" data-key="person_name" bindinput="getInputVal"></input></view>
     </view> -->
     <view class="form_item">
-      <view class="form_txt">农场名称 <text>*</text></view>
-      <view class="form_content"><input placeholder="请输入农场名称" value="{{room_name}}" data-key="room_name" bindinput="getInputVal"></input></view>
+      <view class="form_txt">教育名称 <text>*</text></view>
+      <view class="form_content"><input placeholder="请输入教育名称" value="{{room_name}}" data-key="room_name" bindinput="getInputVal"></input></view>
     </view>
     <view class="form_item">
       <view class="form_txt">联系方式 <text>*</text></view>
@@ -120,7 +120,7 @@
       </view>
     </view> -->
     <view class="form_item">
-      <view class="form_txt">农场背景图片 <text>*</text></view>
+      <view class="form_txt">教育背景图片 <text>*</text></view>
       <view class="form_content noborder">
         <view class="add_box" bindtap="chooseRoomImg">
           <text wx:if="{{is_roomImg == 0}}">+</text>

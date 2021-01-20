@@ -3,5 +3,5 @@
     "van-cell": "@vant/weapp/cell/index",
     "van-cell-group": "@vant/weapp/cell-group/index"
   },
-  "navigationBarTitleText": "农场宏观视角"
+  "navigationBarTitleText": "宏观视角"
 }

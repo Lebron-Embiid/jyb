@@ -962,7 +962,7 @@ export function companyMemberList(data) {
   })
 }
 
-// 农产品溯源接口
+// 教课帮接口
 // 查询代理人优惠券
 export function getAgentCoupon1(data) {
   return request({

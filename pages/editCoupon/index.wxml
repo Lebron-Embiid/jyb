@@ -3,11 +3,11 @@
   <form bindsubmit="submitForm">
     <view class="title">编辑区</view>
     <view class="form_item">
-      <view class="form_txt">促销券类型</view>
+      <view class="form_txt">课程类型</view>
       <view class="form_content">
         <picker mode="selector" range="{{couponTypes}}" range-key="name" bindchange="bindPickerChange">
           <view class="picker">
-            {{coupon_index?couponTypes[coupon_index].name:'请选择促销券类型'}}
+            {{coupon_index?couponTypes[coupon_index].name:'请选择课程类型'}}
           </view>
         </picker>
       </view>
@@ -42,10 +42,10 @@
       <text class="form_txt">代理人收益（每张）</text>
       <view class="form_content"><input placeholder="请输入代理人收益" type="number" value="{{profit}}" bindinput="getProfit"></input></view>
     </view>
-    <view class="form_item">
+    <!-- <view class="form_item">
       <text class="form_txt">{{from_type==0?'促销券':'代金券'}}使用频率（小时）</text>
       <view class="form_content"><input placeholder="{{from_type==0?'请输入促销券使用频率':'请输入代金券使用频率'}}" type="number" value="{{frequence}}" bindinput="getFrequence"></input></view>
-    </view>
+    </view> -->
     <!-- <view class="form_item">
       <text class="form_txt">促销券购买频率（天）</text>
       <view class="form_content"><input placeholder="请输入促销券购买频率" type="number" value="{{buyFrequence}}" bindinput="getBuyFrequence"></input></view>

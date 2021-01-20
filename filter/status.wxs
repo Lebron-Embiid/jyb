@@ -38,24 +38,20 @@
   },
 
   roleStatus: function(status){
-    // 角色 0 消费者 1 农场老板 2 农场经理 3 代理人 4 销售员 5 嘉宾邀请 6 会议观察员 7 物流站点
+    // 角色 0 学员 1 课程老板 10 院长 11 教师 12 企业 13 服务员
     var status_txt = '';
     if(status == '0' || status == null){
-      status_txt = '消费者';
+      status_txt = '学员';
     }else if(status == '1'){
-      status_txt = '农场老板';
-    }else if(status == '2'){
-      status_txt = '农场经理';
-    }else if(status == '3'){
-      status_txt = '代理人';
-    }else if(status == '4'){
-      status_txt = '销售员';
-    }else if(status == '5'){
-      status_txt = '嘉宾邀请';
-    }else if(status == '6'){
-      status_txt = '会议观察员';
-    }else{
-      status_txt = '物流站点'
+      status_txt = '课程老板';
+    }else if(status == '10'){
+      status_txt = '院长';
+    }else if(status == '11'){
+      status_txt = '教师';
+    }else if(status == '12'){
+      status_txt = '企业';
+    }else if(status == '13'){
+      status_txt = '服务员';
     }
     return status_txt;
   },

@@ -11,7 +11,7 @@ Page({
   data: {
     functionList:[
       {
-        name:'代理人出售成功列表',
+        name:'出售成功列表',
         url: '/pages/huiyibang/invition/index'
       },
       // {
@@ -27,25 +27,25 @@ Page({
       //   url: '/pages/huiyibang/voteList/index'
       // },
       {
-        name: '代理人浏览效率',
+        name: '浏览效率',
         url: '/pages/huiyibang/BrowseList/index'
       },
-      {
-        name:'品种分布趋势图',
-        url: '/pages/huiyibang/shipment/index'
-      },
-      {
-        name:'品种销售报表',
-        url: '/pages/huiyibang/circleTable/index'
-      },
-      {
-        name:'促销券类型销量报表',
-        url: '/pages/huiyibang/voucher/index'
-      },
-      {
-        name:'场地分布报表',
-        url: '/pages/huiyibang/columnar/index'
-      },
+      // {
+      //   name:'品种分布趋势图',
+      //   url: '/pages/huiyibang/shipment/index'
+      // },
+      // {
+      //   name:'品种销售报表',
+      //   url: '/pages/huiyibang/circleTable/index'
+      // },
+      // {
+      //   name:'促销券类型销量报表',
+      //   url: '/pages/huiyibang/voucher/index'
+      // },
+      // {
+      //   name:'场地分布报表',
+      //   url: '/pages/huiyibang/columnar/index'
+      // },
       // {
       //   name:'查看代金券列表',
       //   url: '/pages/huiyibang/couponList/index'

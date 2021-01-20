@@ -33,8 +33,8 @@ import {
 } from '../../api/user.js'
 import { base64src } from '../../utils/base64src.js'
 import publicFun from '../../utils/public.js'
-// var requestUrl = 'http://192.168.1.2:8092'
-var requestUrl = 'https://h.3p3.top'
+var requestUrl = 'http://192.168.1.2:8094'
+// var requestUrl = 'https://e.3p3.top'
 Page({
 
   /**
@@ -163,16 +163,6 @@ Page({
         
         getInfo().then(res=>{
           if(res.code == 200){
-            // var promotion_list = [];
-            // var id_title = '';
-            // if(res.data.type == null){
-            //   id_title = '消费者';
-            // }
-            // promotion_list = [
-            //   {icon: '/assets/nav_icon9.png',title: '我当销售员'},
-            //   {icon: '/assets/nav_icon8.png',title: '我做代理人'},
-            //   {icon: '/assets/nav_icon6.png',title: '我发促销券'}
-            // ]
             that.setData({
               // promotion_list: promotion_list,
               // id_title: id_title,
@@ -181,76 +171,12 @@ Page({
               phone: res.data.phone
               // identity: res.data.type
             })
-            if(that.data.identity == 3){
+            if(that.data.identity == 0 || that.data.identity == 3){
               that.getMyBusinessList();
-            }else{
-              // queryBusinessImg({
-              //   bossbossId: ''
-              // }).then((res)=>{
-              //   if(res.code == 200){
-              //     that.setData({
-              //       shangjia_img: res.data
-              //     })
-              //   }
-              // })
             }
-            
-            // let identity = this.data.identity;
-            // let identity = res.data.type;
-            // if(identity == 'boss'){
-            //   // 老板
-            //   id_title = '老板';
-            //   promotion_list = [
-            //     {icon: '/assets/nav_icon2.png',title: '促销券编辑'},
-            //     {icon: '/assets/nav_icon9.png',title: '我的销售员'},
-            //     {icon: '/assets/nav_icon3.png',title: '促销券回顾'},
-            //     {icon: '/assets/nav_icon6.png',title: '促销券发行'},
-            //     {icon: '/assets/nav_icon8.png',title: '我的代理人'},
-            //     {icon: '/assets/nav_icon7.png',title: '促销券收益'}
-            //   ]
-            // }else if(identity == 'agent'){
-            //   // 代理人
-            //   id_title = '代理人';
-            //   promotion_list = [
-            //     {icon: '/assets/nav_icon1.png',title: '促销券收藏'},
-            //     {icon: '/assets/nav_icon6.png',title: '促销券再发行'},
-            //     {icon: '/assets/nav_icon3.png',title: '促销券回顾'},
-            //     {icon: '/assets/nav_icon7.png',title: '促销券收益'}
-            //   ]
-            // }else if(identity == 'seller'){
-            //   // 销售员
-            //   id_title = '销售员';
-            //   promotion_list = [
-            //     {icon: '/assets/nav_icon4.png',title: '促销券销售'},
-            //     {icon: '/assets/nav_icon5.png',title: '促销券验证'},
-            //     {icon: '/assets/nav_icon3.png',title: '促销券收入'},
-            //     {icon: '/assets/nav_icon7.png',title: '促销券折让'}
-            //   ]
-            // }else{
-            //   id_title = '消费者';
-            //   promotion_list = [
-            //     {icon: '/assets/nav_icon9.png',title: '我当销售员'},
-            //     {icon: '/assets/nav_icon8.png',title: '我做代理人'},
-            //     {icon: '/assets/nav_icon6.png',title: '我发促销券'}
-            //     // {icon: '/assets/nav_icon6.png',title: '我做编辑人'}
-            //   ]
-            // }
           }
         }).catch(err=>{
-          // let promotion = [{icon: '/assets/nav_icon9.png',title: '我当销售员'},
-          //     {icon: '/assets/nav_icon8.png',title: '我做代理人'},
-          //     {icon: '/assets/nav_icon6.png',title: '我发促销券'}
-          //   ];
-          //   that.setData({
-          //     promotion_list:  promotion,
-          //     is_click: false
-          //   })
         })
-        // .finally(sfs=>{
-        //   wx.reLaunch({
-        //     url: "/pages/login/index"
-        //   })
-        // })
       },
       fail () {
         console.log('登录已过期');
@@ -445,23 +371,6 @@ Page({
             coupon_list: this.data.coupon_list.concat(res.data)
           })
         }
-        // for(let i in res.data.records){
-        //   let item = res.data.records[i];
-        //   let random = Math.floor(Math.random()*99999999);
-        //   let base64 = "data:image/png;base64," + item.rqcode;
-        //   let coupon_list = [];
-        //   base64src(base64,item.couponId,ress=>{
-        //     this.data.coupon_list.push({
-        //       id: item.couponId,
-        //       src: ress,
-        //       couponName: item.couponName
-        //     });
-        //     this.setData({
-        //       coupon_list: this.data.coupon_list,
-        //       pages: res.data.pages
-        //     })
-        //   })
-        // }
       }
     })
   },
@@ -570,7 +479,7 @@ Page({
       if(this.data.identity == '1'){
         this.getCouponList();
       }
-      if(this.data.identity == '3'){
+      if(this.data.identity == '0' || this.data.identity == '3'){
         this.getCouponList1();
       }
     }
@@ -591,7 +500,7 @@ Page({
     if(this.data.identity == '1'){
       this.getIssuedList(this.data.status,this.data.is_coupon);
     }
-    if(this.data.identity == '3'){
+    if(this.data.identity == '0' || this.data.identity == '3'){
       this.getIssuedList1(this.data.status);
     }
   },
@@ -805,7 +714,7 @@ Page({
           })
           this.getIssuedList(1,1);
         }
-      }else if(this.data.identity == 3){
+      }else if(this.data.identity == 0 || this.data.identity == 3){
         if(e.detail.index == 0){
           // 促销券收藏
           this.setData({
@@ -1080,7 +989,7 @@ Page({
           url: '/pages/couponDetail/index?src='+this.data.issued_list[index].imageNum+'&id='+this.data.issued_list[index].idKey
         })
       }
-    }else if(this.data.identity == '3'){
+    }else if(this.data.identity == '0' || this.data.identity == '3'){
       if(this.data.index == 0){
         // 促销券编辑
         wx.navigateTo({
@@ -1164,7 +1073,7 @@ Page({
         // {icon: '/assets/nav_icon1.png',title: '代金券代理'},
         {icon: '/assets/nav_icon6.png',title: '代金券发行'},
       ]
-    }else if(identity == 3){
+    }else if(identity == 0 || identity == 3){
       // 代理人
       id_title = '代理人';
       promotion_list = [

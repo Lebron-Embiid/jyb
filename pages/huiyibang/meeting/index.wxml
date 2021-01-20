@@ -1,7 +1,7 @@
 <!--pages/huiyibang/meeting/index.wxml-->
 <wxs src="../../../filter/status.wxs" module="status"></wxs>
 <view wx:if="{{room_id}}">
-  <van-button wx:if="{{identity==0}}" catch:click="deleteMeeting" class="clear_btn" color="#333333" type="primary" size="small">退出农场</van-button>
+  <van-button wx:if="{{identity==0}}" catch:click="deleteMeeting" class="clear_btn" color="#333333" type="primary" size="small">退出公司</van-button>
   <image class="back_img" src="{{back_img}}" mode="aspectFill"></image>
   <view class="meeting_box">
     <view class="meetimg_item" wx:for="{{meetings}}" wx:key="index" bindtap="clickMeetingItem" data-index="{{index}}">
@@ -63,9 +63,10 @@
   </van-popup>
   <van-popup show="{{ scan_show }}" bind:close="onClose">
     <view class="personInfo_box">
-      <view class="personTitle">请输入描述内容</view>
+      <view class="personTitle">
+        <input type="text" value="{{scan_content}}" bindinput="writeContent" placeholder="请输入描述内容"></input>
+      </view>
       <view class="personView">
-        <input type="text" value="{{scan_content}}" bindinput="writeContent" placeholder=""></input>
         <button type="primary" size="mini" bindtap="submitContent">确定</button>
       </view>
     </view>

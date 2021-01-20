@@ -107,10 +107,7 @@
 .personView{
   width: 100%;
   font-size: 28rpx;
-  margin-bottom: 10rpx;
-}
-.personView view{
-  margin-bottom: 10rpx;
+  text-align: center;
 }
 .clear_btn{
   border-radius: 10rpx;

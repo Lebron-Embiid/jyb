@@ -67,7 +67,8 @@ Page({
     big_code: '',//车二维码
     videoLinks: [{name: '视频1',videoLink: ''}],
     scan_content: '',
-    scan_show: false
+    scan_show: false,
+    scan_txt: ''
   },
   
   /**
@@ -114,8 +115,10 @@ Page({
   onClose() {
     this.setData({ show: false, scan_show: false, table_show: false });
   },
-  writeContent(){
-    
+  writeContent(e){
+    this.setData({
+      scan_content: e.detail.value
+    })
   },
   getProjectList(){
     query_company_code_type({
@@ -276,191 +279,70 @@ Page({
     console.log(this.data.room_identity);
     let meeting_list = [];
     if(this.data.room_identity == 0){
-      // 嘉宾
+      // 学员
       meeting_list = [
-        // {
-        //   title: '登记信息管理',
-        //   icon: '/assets/hyb/hyb9.png'
-        // },
-      {
-        title: '我的促销券',
-        icon: '/assets/hyb/hyb14.png'
-      },
-      // {
-      //   title: '我的代金券',
-      //   icon: '/assets/hyb/hyb15.png'
-      // },
-      {
-        title: '农场角色申请',
-        icon: '/assets/hyb/hyb13.png'
-      }
-      // ,{
-      //   title: '参与互动',
-      //   icon: '/assets/hyb/hyb16.png'
-      // }
+        {
+          title: '促销券管理',
+          icon: '/assets/hyb/hyb2.png'
+        },
+        {
+          title: '角色申请',
+          icon: '/assets/hyb/hyb13.png'
+        },
+        {
+          title: '评价',
+          icon: '/assets/hyb/hyb11.png'
+        }
     ]
     }else if(this.data.room_identity == 1){
-      // 农场老板
+      // 课程老板
       meeting_list = [{
-        title: '查看农场角色申请',
+        title: '查看角色申请',
         icon: '/assets/hyb/hyb1.png'
       },{
         title: '促销券管理',
         icon: '/assets/hyb/hyb2.png'
       },{
-        title: '农场宏观视角',
+        title: '宏观视角',
         icon: '/assets/hyb/hyb3.png'
       },{
-        title: '我的视频权益',
-        icon: '/assets/hyb/hyb4.png'
-      },{
-        title: '权益接收',
-        icon: '/assets/hyb/hyb5.png'
-      },{
-        title: '修改农场信息',
+        title: '修改公司信息',
         icon: '/assets/hyb/hyb6.png'
       }]
-    }else if(this.data.room_identity == 2){
-      // 农场经理
+    }else if(this.data.room_identity == 10){
+      // 院长
       meeting_list = [
         // {
         //   title: '节目进程管理',
         //   icon: '/assets/hyb/hyb7.png'
         // },
-        {
-          title: '查看农场角色申请',
-          icon: '/assets/hyb/hyb1.png'
-        },
-        // {
-        //   title: '会议桌位管理',
-        //   icon: '/assets/hyb/hyb8.png'
-        // },
-      // {
-      //   title: '登记信息管理',
-      //   icon: '/assets/hyb/hyb9.png'
-      // },
-      {
-        title: '视频权益列表',
-        icon: '/assets/hyb/hyb4.png'
-      },{
-        title: '权益接收',
-        icon: '/assets/hyb/hyb5.png'
-      }
-      // ,{
-      //   title: '代金券管理',
-      //   icon: '/assets/hyb/hyb15.png'
-      // }
       ]
-    }else if(this.data.room_identity == 3){
-      // 代理人
+    }else if(this.data.room_identity == 11){
+      // 教师
       meeting_list = [
-      //   {
-      //   title: '登记信息管理',
-      //   icon: '/assets/hyb/hyb9.png'
-      // },
-      {
-        title: '促销券管理',
-        icon: '/assets/hyb/hyb2.png'
-      },]
-    }else if(this.data.room_identity == 4){
-      // 销售员
+        {
+          title: '评价',
+          icon: '/assets/hyb/hyb11.png'
+        }
+      ]
+    }else if(this.data.room_identity == 12){
+      // 企业
       meeting_list = [
-      //   {
-      //   title: '登记信息管理',
-      //   icon: '/assets/hyb/hyb9.png'
-      // },
-      {
+        {
+          title: '查看评价',
+          icon: '/assets/hyb/hyb11.png'
+        }
+      ]
+    }else if(this.data.room_identity == 13){
+      // 服务员
+      meeting_list = [{
         title: '销售',
         icon: '/assets/hyb/hyb11.png'
-      },{
+      },
+      {
         title: '验证',
         icon: '/assets/hyb/hyb11.png'
-      }
-      // ,{
-      //   title: '验证代金券',
-      //   icon: '/assets/hyb/hyb10.png'
-      // }
-      ,
-      // {
-      //   title: '扫码绑定会议桌',
-      //   icon: '/assets/hyb/hyb12.png'
-      // },
-      {
-        title: '农场角色申请',
-        icon: '/assets/hyb/hyb13.png'
-      },]
-    }else if(this.data.room_identity == 5){
-      // 嘉宾邀请
-      meeting_list = [{
-        title: '农场角色申请',
-        icon: '/assets/hyb/hyb13.png'
-      },{
-        title: '登记信息管理',
-        icon: '/assets/hyb/hyb9.png'
-      },]
-    }else if(this.data.room_identity == 6){
-      // 会议观察员
-      meeting_list = [{
-        title: '节目进程查看',
-        icon: '/assets/hyb/hyb7.png'
-      },{
-        title: '查看农场角色申请',
-        icon: '/assets/hyb/hyb1.png'
-      },{
-        title: '农场宏观视角',
-        icon: '/assets/hyb/hyb3.png'
-      },{
-        title: '农场角色申请',
-        icon: '/assets/hyb/hyb13.png'
-      },{
-        title: '登记信息管理',
-        icon: '/assets/hyb/hyb9.png'
-      },]
-    }else if(this.data.room_identity == 7){
-      // 物流站点
-      if(this.data.log_identity == 0){
-        // 物流封装站点
-        meeting_list = [
-          {
-            title: '物流装箱',
-            icon: '/assets/hyb/hyb12.png'
-          },{
-            title: '我的视频权益',
-            icon: '/assets/hyb/hyb4.png'
-          },{
-            title: '权益接收',
-            icon: '/assets/hyb/hyb5.png'
-          },
-        ]
-      }else if(this.data.log_identity == 1){
-        // 物流装车站点
-        meeting_list = [
-          {
-            title: '扫车二维码',
-            icon: '/assets/hyb/hyb12.png'
-          },
-          {
-            title: '扫箱子二维码',
-            icon: '/assets/hyb/hyb12.png'
-          },
-        ]
-      }else if(this.data.log_identity == 2){
-        // 物流中转站点
-        meeting_list = [
-          {
-            title: '创建站点',
-            icon: '/assets/hyb/hyb12.png'
-          },
-        ]
-      }else if(this.data.log_identity == 3){
-        // 物流散货站点
-        meeting_list = [
-          {
-            title: '物流散货',
-            icon: '/assets/hyb/hyb12.png'
-          },
-        ]
-      }
+      }]
     }
     this.setData({
       meetings: meeting_list
@@ -535,37 +417,20 @@ Page({
               console.log('----log_role----'+this.data.log_identity)
               this.getRoleInit();
               if(data[0].roleType == 0){
-                array = ['消费者'];
+                array = ['学员'];
                 role_list = [0];
               }else if(data[0].roleType == 1){
-                array = ['农场老板','农场经理','代理人','销售员','消费者'];
-                role_list = [1,2,3,4,0];
-              }else if(data[0].roleType == 2){
-                array = ['农场经理','销售员','消费者'];
-                role_list = [2,4,0];
-              }else if(data[0].roleType == 3){
-                array = ['代理人','消费者'];
-                role_list = [3,0];
-              }else if(data[0].roleType == 4){
-                array = ['销售员','消费者'];
-                role_list = [4,0];
-              }else if(data[0].roleType == 5){
-                array = ['嘉宾邀请'];
-                role_list = [5];
-              }else if(data[0].roleType == 6){
-                array = ['会议观察员','消费者'];
-                role_list = [6,0];
-              }else if(data[0].roleType == 7){
-                if(this.data.log_identity == 0 || this.data.log_identity == null || this.data.log_identity == ''){
-                  array = ['物流封装站点','消费者'];
-                }else if(this.data.log_identity == 1){
-                  array = ['物流装车站点','消费者'];
-                }else if(this.data.log_identity == 2){
-                  array = ['物流中转站点','消费者'];
-                }else if(this.data.log_identity == 3){
-                  array = ['物流散货站点','消费者'];
-                }
-                role_list = [7,0];
+                array = ['课程老板','服务员','学员'];
+                role_list = [1,13,0];
+              }else if(data[0].roleType == 10){
+                array = ['院长','学员'];
+                role_list = [10,0];
+              }else if(data[0].roleType == 11){
+                array = ['教师','学员'];
+                role_list = [11,0];
+              }else if(data[0].roleType == 12){
+                array = ['企业','学员'];
+                role_list = [12,0];
               }
             }else{
               wx.removeStorageSync('room_id');
@@ -695,36 +560,17 @@ Page({
   clickMeetingItem(e){
     let click_idx = e.currentTarget.dataset.index;
     if(this.data.room_identity == 0){
-      // 嘉宾
+      // 学员
       if(click_idx == 0){
-        // 个人信息修改
-      //   wx.navigateTo({
-      //     url: '/pages/huiyibang/addCheck/index'
-      //   })
-      // }else if(click_idx == 1){
-        // 我的促销券
-        // wx.navigateTo({
-        //   url: '/pages/myBuyCoupon/index?type=0'
-        // })
-        if(this.data.couponSellIdKey!=''){
-          wx.navigateTo({
-            url: '/pages/couponDetail/index?type=buy&id='+this.data.couponSellIdKey
-          })
-        }else{
-          publicFun.getToast('您暂无促销券')
-        }
-      }
-      // else if(click_idx == 2){
-      //   // 我的代金券
-      //   wx.navigateTo({
-      //     url: '/pages/myBuyCoupon/index?type=1'
-      //   })
-      // }
-      else if(click_idx == 1){
+        // 促销券管理
+        wx.navigateTo({
+          url: '/pages/promotion/index'
+        })
+      }else if(click_idx == 1){
         // 房间权限申请
         console.log(JSON.stringify(this.data.role_list))
         if(this.data.role_list.length==1 && this.data.role_list[0]==0){
-          // 只有嘉宾身份
+          // 只有学员身份
           wx.navigateTo({
             url: '/pages/huiyibang/addRole/index'
           })
@@ -733,37 +579,10 @@ Page({
             url: '/pages/huiyibang/roleList/index?type=0'
           })
         }
-      }else{
-        // 参与互动
-        queryOneMenu({
-          roomId: wx.getStorageSync('room_id'),
-          status: 1
-        }).then((res)=>{
-          if(res.code == 200){
-            console.log('---查询正在进行的节目---'+JSON.stringify(res))
-            if(res.data != null){
-              if(res.data.type != 1){
-                // 参与互动
-                let video_data = [];
-                getMenuVideoParseLink({
-                  menuId: res.data.idKey
-                }).then((ress)=>{
-                  if(ress.code == 200){
-                    ress.data.forEach(item => {
-                      video_data.push((item))
-                    })
-                    wx.navigateTo({
-                      url: '/pages/demo/index?from_type=click&video_data=' + encodeURIComponent(JSON.stringify(video_data))
-                    })
-                  }
-                })
-              }else{
-                publicFun.getToast("当前节目不可参与互动");
-              }
-            }else{
-              publicFun.getToast("当前没有进行任何节目");
-            }
-          }
+      }else if(click_idx == 2){
+        this.setData({
+          scan_txt: '评价',
+          scan_show: true
         })
       }
       // else if(click_idx == 3){
@@ -786,9 +605,9 @@ Page({
       //   })
       // }
     }else if(this.data.room_identity == 1){
-      // 农场老板
+      // 课程老板
       if(click_idx == 0){
-        //查看农场 /pages/huiyibang/checkConferenceRoom/index
+        //查看申请列表
         wx.navigateTo({
           url: '/pages/huiyibang/roleList/index?type=1',
         })
@@ -803,261 +622,46 @@ Page({
           url: '/pages/huiyibang/Browse/index'
         })
       }else if(click_idx == 3){
-        // 我的视频权益
-        wx.navigateTo({
-          url: '/pages/qinqinhehe/videoInterests/index?type=1'
-        })
-      }else if(click_idx == 4){
-        // 权益接收
-        this.showBossCode();
-        this.setData({
-          show: true
-        })
-      }else{
         // 修改农场信息
         wx.navigateTo({
           url: '/pages/merchant/index?is_edit=1'
         })
       }
-    }else if(this.data.room_identity == 2){
-      // 农场经理
+    }else if(this.data.room_identity == 10){
+      // 院长
       if(click_idx == 0){
-        // 节目进程管理
-      //   wx.navigateTo({
-      //     url: '/pages/huiyibang/menu/index?room_id='+this.data.room_id
-      //   })
-      // }else if(click_idx == 1){
-        //查看农场
-        wx.navigateTo({
-          url: '/pages/huiyibang/roleList/index?type=1',
-        })
-      }else if(click_idx == 1){
-        // 会议桌位管理
-      //   wx.navigateTo({
-      //     url: '/pages/huiyibang/table/index'
-      //   })
-      // }
-      // else if(click_idx == 2){
-        // 视频权益列表
-        wx.navigateTo({
-          url: '/pages/qinqinhehe/videoInterests/index?type=2'
-        })
-      }else if(click_idx == 2){
-        // 权益接收
-        this.showBossCode();
+        
+      }
+    }else if(this.data.room_identity == 11){
+      // 教师
+      if(click_idx == 0){
         this.setData({
-          show: true
-        })
-      }else{
-        // 代金券管理
-        // wx.navigateTo({
-        //   url: '/pages/promotion/index'
-        // })
-      }
-    }else if(this.data.room_identity == 3){
-      // 代理人
-      if(click_idx == 0){
-        // 个人信息修改
-      //   wx.navigateTo({
-      //     url: '/pages/huiyibang/addCheck/index'
-      //   })
-      // }else if(click_idx == 1){
-        // 促销券管理
-        wx.navigateTo({
-          url: '/pages/promotion/index'
+          scan_txt: '评价',
+          scan_show: true
         })
       }
-    }else if(this.data.room_identity == 4){
-      // 销售员
+    }else if(this.data.room_identity == 12){
+      // 企业
       if(click_idx == 0){
-        // 个人信息修改
-      //   wx.navigateTo({
-      //     url: '/pages/huiyibang/addCheck/index'
-      //   })
-      // }else if(click_idx == 1){
+        this.setData({
+          scan_txt: '查看评价',
+          scan_show: true
+        })
+      }
+    }else if(this.data.room_identity == 13){
+      // 服务员
+      if(click_idx == 0){
         // 销售
-        wx.scanCode({
-          success(res) {
-            console.log('扫码返回的参数: '+JSON.stringify(res));
-            // console.log('截取字符串后：'+res.result.replace("https://h.3p3.top?data=",""))
-            let data = res.result.replace("https://h.3p3.top?data=","");
-            let dataStr = JSON.parse(data.split('&')[0]).couponSellIdKey;
-            console.log('---促销券idkey---'+dataStr)
-            sellaccept({
-              accept: 1,
-              idKey: dataStr //this.data.couponId
-            }).then((ress)=>{
-              if(ress.code == 200){
-                wx.showModal({
-                  title: '提示',
-                  content: '出售成功',
-                  showCancel: false
-                })
-              }
-            })
-          }
+        this.setData({
+          scan_show: true,
+          scan_txt: '销售'
         })
       }else if(click_idx == 1){
         // 验证
-        this.signInOut()
-      }
-      // else if(click_idx == 2){
-      //   // 扫码绑定会议桌
-      //   var that = this;
-      //   wx.scanCode({
-          
-      //     success(res) {
-      //       console.log('扫码返回的参数: '+res.result);
-      //       console.log('截取字符串后：'+res.result.replace("https://q.3p3.top?data=",""))
-      //       let dataStr = res.result.replace("https://q.3p3.top?data=","");
-      //       that.setData({
-      //         table_show: true,
-      //         table_dataStr: dataStr 
-      //       })
-      //       console.log(dataStr)
-      //     }
-      //   })
-      else if(click_idx == 2){
-        // 房间权限申请
-        wx.navigateTo({
-          url: '/pages/huiyibang/roleList/index'
+        this.setData({
+          scan_show: true,
+          scan_txt: '验证'
         })
-      }
-    }else if(this.data.room_identity == 5){
-      // 嘉宾邀请
-      if(click_idx == 0){
-        // 房间权限管理
-        wx.navigateTo({
-          url: '/pages/huiyibang/roleList/index'
-        })
-      }else if(click_idx == 1){
-        // 嘉宾角色管理
-        wx.navigateTo({
-          url: '/pages/huiyibang/addCheck/index'
-        })
-      }
-    }else if(this.data.room_identity == 6){
-      // 会议观察员
-      if(click_idx == 0){
-        // 节目进程查看
-        wx.navigateTo({
-          url: '/pages/huiyibang/menu/index?from=look&room_id='+this.data.room_id
-        })
-      }else if(click_idx == 1){
-        // 查看农场
-        wx.navigateTo({
-          url: '/pages/huiyibang/roleList/index?type=1',
-        })
-      }else if(click_idx == 2){
-        // 农场宏观视角
-        wx.navigateTo({
-          url: '/pages/huiyibang/Browse/index'
-        })
-      }else if(click_idx == 3){
-        // 房间权限申请
-        wx.navigateTo({
-          url: '/pages/huiyibang/roleList/index'
-        })
-      }else if(click_idx == 4){
-        // 嘉宾角色管理
-        wx.navigateTo({
-          url: '/pages/huiyibang/addCheck/index'
-        })
-      }
-    }else if(this.data.room_identity == 7){
-      // 物流站点
-      if(this.data.log_identity == 0 || this.data.log_identity == null || this.data.log_identity == ''){
-        // 物流封装站点
-        if(click_idx == 0){
-          this.getProjectList();
-        }else if(click_idx == 1){
-          // 视频权益列表
-          wx.navigateTo({
-            url: '/pages/qinqinhehe/videoInterests/index?type=2'
-          })
-        }else if(click_idx == 2){
-          // 权益接收
-          this.showBossCode();
-          this.setData({
-            show: true
-          })
-        }
-      }else if(this.data.log_identity == 1){
-        // 物流装车站点
-        let that = this;
-        if(click_idx == 0){
-          wx.scanCode({
-            success(res) {
-              console.log('扫车子二维码返回的参数---'+res.result);
-              let data = res.result.replace("https://h.3p3.top?data=","");
-              let codeNumber = data.split(',')[2].split('=')[1];
-              console.log('codeNumber---'+codeNumber);
-              that.setData({
-                big_code: codeNumber
-              })
-              wx.showModal({
-                title: '提示',
-                content: '扫描成功',
-                showCancel: false
-              })
-            }
-          })
-        }else if(click_idx == 1){
-          if(that.data.big_code == ''){
-            publicFun.getToast('请先扫描车的二维码');
-            return;
-          }
-          wx.scanCode({
-            success(res) {
-              console.log('扫箱子二维码返回的参数---'+res.result);
-              let data = res.result.replace("https://h.3p3.top?data=","");
-              let codeNumber = data.split(',')[2].split('=')[1];
-              console.log('codeNumber---'+codeNumber);
-              createRelationByTypeId({
-                codeNumberParent: that.data.big_code,
-                codeNumberSon: codeNumber,
-                userId: wx.getStorageSync('userInfo').unionId
-              }).then((ress)=>{
-                if(ress.code == 200){
-                  wx.showModal({
-                    title: '提示',
-                    content: '装车成功',
-                    showCancel: false
-                  })
-                  that.scanSell(codeNumber,res.result);
-                }
-              })
-            }
-          })
-        }
-      }else if(this.data.log_identity == 2){
-        // 物流中转站点
-        var that = this;
-        if(click_idx == 0){
-          // 创建站点
-          getCouponsell({
-  
-          }).then((ares)=>{
-            if(ares.code == 200){
-              wx.scanCode({
-                success(res) {
-                  let data = res.result.replace("https://h.3p3.top?data=","");
-                  let codeNumber = data.split(',')[2].split('=')[1];
-                  console.log(codeNumber+'---code - remark---'+wx.getStorageSync('remark'))
-                  that.scanSell(codeNumber,res.result);
-                }
-              })
-            }
-          })
-        }
-      }else if(this.data.log_identity == 3){
-        // 物流散货站点
-        if(click_idx == 0){
-          this.setData({
-            videoLinks: [{name: '视频1',videoLink: ''}],
-            show2: true
-          })
-        }
       }
     }
   },
@@ -1084,7 +688,48 @@ Page({
       }
     })
   },
+  submitContent(){
+    if(this.data.scan_content == ''){
+      publicFun.getToast('请输入描述内容');
+      return;
+    }
+    this.setData({
+      scan_content: '',
+      scan_show: false
+    })
+    if(this.data.scan_txt == '销售'){
+      this.openScanCode();
+    }else{
+      this.signInOut();
+    }
+  },
+  openScanCode(){
+    // 销售
+    wx.scanCode({
+      success(res) {
+        console.log('扫码返回的参数: '+JSON.stringify(res));
+        // console.log('截取字符串后：'+res.result.replace("https://h.3p3.top?data=",""))
+        let data = res.result.replace("https://h.3p3.top?data=","");
+        let dataStr = JSON.parse(data.split('&')[0]).couponSellIdKey;
+        console.log('---促销券idkey---'+dataStr)
+        sellaccept({
+          accept: 1,
+          content: that.data.scan_content,
+          idKey: dataStr
+        }).then((ress)=>{
+          if(ress.code == 200){
+            wx.showModal({
+              title: '提示',
+              content: '出售成功',
+              showCancel: false
+            })
+          }
+        })
+      }
+    })
+  },
   signInOut(){
+    // 验证
     var that = this;
     wx.scanCode({
       success(res) {
@@ -1104,6 +749,7 @@ Page({
         // 验证促销券
         verifySellCoupon({
           couponType: 0,
+          content: that.data.scan_content,
           // idKey: idKey,
           // roomId: wx.getStorageSync('room_id'),
           // userId: userId,
@@ -1113,7 +759,7 @@ Page({
           if(resg.code == 200){
             wx.showModal({
               title: '提示',
-              content: '验证成功',
+              content: '提交成功',
               showCancel: false
             })
           }
@@ -1156,7 +802,7 @@ Page({
     let that = this;
     wx.showModal({
       title: "提示",
-      content: "确定要退出当前农场吗？",
+      content: "确定要退出当前公司吗？",
       success: function(mos){
         if(mos.confirm){
           emptyRoomRole({

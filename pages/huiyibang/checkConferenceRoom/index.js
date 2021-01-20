@@ -8,7 +8,7 @@ Page({
   data: {
     functionList:[
       {
-        name: '查看农场角色申请',
+        name: '查看角色申请',
         url: '/pages/huiyibang/roleList/index?type=1'
       },
       // {

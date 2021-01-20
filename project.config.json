@@ -42,7 +42,7 @@
   "compileType": "miniprogram",
   "libVersion": "2.10.0",
   "appid": "wx4e6f6f1a956bdbc9",
-  "projectname": "%E6%95%99%E8%82%B2%E5%B8%AE",
+  "projectname": "教课帮",
   "debugOptions": {
     "hidedInDevtools": []
   },

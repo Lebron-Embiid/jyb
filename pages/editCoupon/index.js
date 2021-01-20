@@ -19,7 +19,7 @@ Page({
     count: '',
     date: '',
     profit: '',
-    frequence: '',
+    frequence: 0,
     buyFrequence: 0,
     date_txt: '请选择促销券有效时间',
     is_edit: false,
@@ -28,7 +28,7 @@ Page({
     today_date: '',//当天日期
     from_type: 0,//促销券：0  代金券：1
     coupon_index: null,
-    couponTypes: [{name: '新年券'},{name: '春节券'},{name: '元宵券'},{name: '家庭券'},{name: '敬老券'},{name: '情侣券'}]
+    couponTypes: [{name: 'java'},{name: 'python'},{name: 'c++'},{name: 'html'},{name: 'javascript'},{name: 'vue'}]
   },
 
   /**
@@ -298,7 +298,7 @@ Page({
   submitForm(e){
     if(this.data.from_type == 0){
       if(this.data.coupon_index == null){
-        publicFun.getToast('请选择促销券类型');
+        publicFun.getToast('请选择课程类型');
         return;
       }
       if(this.data.date == ''){
@@ -309,10 +309,10 @@ Page({
         publicFun.getToast('请输入促销券有效次数');
         return;
       }
-      if(this.data.frequence == ''){
-        publicFun.getToast('请输入促销券使用频率');
-        return;
-      }
+      // if(this.data.frequence == ''){
+      //   publicFun.getToast('请输入促销券使用频率');
+      //   return;
+      // }
       // if(this.data.frequence < 1){
       //   publicFun.getToast('促销券使用频率不能小于1小时');
       //   return;
@@ -327,10 +327,10 @@ Page({
         publicFun.getToast('请输入代金券有效次数');
         return;
       }
-      if(this.data.frequence == ''){
-        publicFun.getToast('请输入代金券使用频率');
-        return;
-      }
+      // if(this.data.frequence == ''){
+      //   publicFun.getToast('请输入代金券使用频率');
+      //   return;
+      // }
     }
     if(this.data.video_list[0].weseeLink == '' && this.data.video_list[1].weseeLink == '' && this.data.video_list[2].weseeLink == ''){
       publicFun.getToast('请至少上传一个视频链接');
