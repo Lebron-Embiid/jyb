@@ -693,10 +693,6 @@ Page({
       publicFun.getToast('请输入描述内容');
       return;
     }
-    this.setData({
-      scan_content: '',
-      scan_show: false
-    })
     if(this.data.scan_txt == '销售'){
       this.openScanCode();
     }else{
@@ -705,6 +701,7 @@ Page({
   },
   openScanCode(){
     // 销售
+    var that = this;
     wx.scanCode({
       success(res) {
         console.log('扫码返回的参数: '+JSON.stringify(res));
@@ -718,6 +715,10 @@ Page({
           idKey: dataStr
         }).then((ress)=>{
           if(ress.code == 200){
+            that.setData({
+              scan_content: '',
+              scan_show: false
+            })
             wx.showModal({
               title: '提示',
               content: '出售成功',
@@ -757,6 +758,10 @@ Page({
         }).then(resg=>{
           console.log('出售成功：'+JSON.stringify(resg));
           if(resg.code == 200){
+            that.setData({
+              scan_content: '',
+              scan_show: false
+            })
             wx.showModal({
               title: '提示',
               content: '提交成功',
