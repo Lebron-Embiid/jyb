@@ -15,14 +15,14 @@ Page({
   data: {
     title: '申请角色',
     id: '',
-    role_type: '2',
+    role_type: '10',
     is_edit: 0,//是否修改进来 0:不是  1:是
     items: [
       // {value: '0', name: '消费者'},
       {value: '10', name: '院长', checked: 'true'},
       {value: '11', name: '教师'},
       {value: '12', name: '企业'},
-      {value: '13', name: '服务员'},
+      // {value: '13', name: '服务员'},
     ],
     remark: '',//站点名称
     roomId: '',

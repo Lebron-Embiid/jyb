@@ -28,7 +28,12 @@ Page({
     today_date: '',//当天日期
     from_type: 0,//促销券：0  代金券：1
     coupon_index: null,
-    couponTypes: [{name: 'java'},{name: 'python'},{name: 'c++'},{name: 'html'},{name: 'javascript'},{name: 'vue'}]
+    coupon_type: 0,//0:学员券  1:教师券
+    couponTypes: [{name: 'Java'},{name: 'PHP'},{name: 'Python'},{name: 'C++'},{name: 'C#'},{name: 'HTML'},{name: 'Javascript'},{name: 'Vue'},{name: 'React'},{name: 'Node'},{name: 'Angular'}],
+    items: [
+      {value: '0', name: '学员券', checked: 'true'},
+      {value: '1', name: '教师券'},
+    ],
   },
 
   /**
@@ -158,6 +163,11 @@ Page({
   onShareAppMessage: function () {
 
   },
+  radioChange(e){
+    this.setData({
+      coupon_type: e.detail.value
+    })
+  },
   bindPickerChange(e){
     this.setData({
       coupon_index: e.detail.value
@@ -274,7 +284,7 @@ Page({
       value: this.data.face,
       jsonList: JSON.stringify(this.data.video_list),
       status: '0',
-      type: 0,
+      type: this.data.coupon_type,
       roomId: wx.getStorageSync('room_id')
     }
     if(this.data.is_edit == true){
@@ -369,7 +379,7 @@ Page({
       value: this.data.face,
       jsonList: JSON.stringify(this.data.video_list),
       status: '1',
-      type: this.data.from_type
+      type: this.data.coupon_type,
     }
     if(this.data.is_edit == true){
       data.couponId = this.data.couponId;

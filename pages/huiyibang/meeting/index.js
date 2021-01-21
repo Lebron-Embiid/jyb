@@ -113,7 +113,7 @@ Page({
     this.setData({ userinfo_show: true })
   },
   onClose() {
-    this.setData({ show: false, scan_show: false, table_show: false });
+    this.setData({ show: false, scan_show: false, table_show: false,scan_content:'' });
   },
   writeContent(e){
     this.setData({
@@ -324,6 +324,10 @@ Page({
           title: '评价',
           icon: '/assets/hyb/hyb11.png'
         }
+        // ,{
+        //   title: '签到',
+        //   icon: '/assets/hyb/hyb11.png'
+        // }
       ]
     }else if(this.data.room_identity == 12){
       // 企业
@@ -341,6 +345,10 @@ Page({
       },
       {
         title: '验证',
+        icon: '/assets/hyb/hyb11.png'
+      },
+      {
+        title: '签到',
         icon: '/assets/hyb/hyb11.png'
       }]
     }
@@ -639,13 +647,26 @@ Page({
           scan_txt: '评价',
           scan_show: true
         })
+      }else if(click_idx == 1){
+        this.setData({
+          scan_txt: '签到',
+          scan_show: true
+        })
       }
     }else if(this.data.room_identity == 12){
       // 企业
       if(click_idx == 0){
-        this.setData({
-          scan_txt: '查看评价',
-          scan_show: true
+        wx.scanCode({
+          success(res) {
+            console.log('扫码返回的参数: '+JSON.stringify(res));
+            let data = res.result.replace("https://h.3p3.top?data=","");
+            let dataStr = JSON.parse(data.split('&')[0]).couponSellIdKey;
+            let userId = data.split('&')[1].replace("userId=","");
+            console.log('---userId---'+userId,dataStr)
+            wx.navigateTo({
+              url: '/pages/evalutionList/index?user_id='+userId+'&menu_id='+dataStr
+            })
+          }
         })
       }
     }else if(this.data.room_identity == 13){
@@ -661,6 +682,11 @@ Page({
         this.setData({
           scan_show: true,
           scan_txt: '验证'
+        })
+      }else{
+        this.setData({
+          scan_txt: '签到',
+          scan_show: true
         })
       }
     }

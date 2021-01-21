@@ -3,6 +3,7 @@
     "pages/userInfo/index",
     "pages/promotion/index",
     "pages/search/index",
+    "pages/evalutionList/index",
     "pages/huiyibang/circleTable/index",
     "pages/huiyibang/shipment/index",
     "pages/huiyibang/voucher/index",

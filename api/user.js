@@ -1762,7 +1762,7 @@ export function statisticsMenuVoteByRoomId(data) {
     data
   })
 }
-//通过菜单ID查看投票人员详情
+//通过菜单ID查看投票人员详情（评价列表）
 export function queryUserVoteDetailByMenuId(data) {
   return request({
     url: "/meeting/vote/queryUserVoteDetailByMenuId",

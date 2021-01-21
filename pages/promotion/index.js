@@ -33,8 +33,8 @@ import {
 } from '../../api/user.js'
 import { base64src } from '../../utils/base64src.js'
 import publicFun from '../../utils/public.js'
-var requestUrl = 'http://192.168.1.2:8094'
-// var requestUrl = 'https://e.3p3.top'
+// var requestUrl = 'http://192.168.1.2:8094'
+var requestUrl = 'https://e.3p3.top'
 Page({
 
   /**
@@ -403,7 +403,7 @@ Page({
       status: status,
       userId: wx.getStorageSync('userInfo').unionId,
       pageNum: this.data.page,
-      type: coupon,
+      // type: coupon,
       pageSize: 5
     }
     if(coupon == 0){
@@ -543,7 +543,18 @@ Page({
           })
         }
         if(e.detail.index == 2){
-          // 代金券发行
+          // 教师券发行
+          this.setData({
+            page: 1,
+            is_list: 1,
+            status: 1,
+            is_home: false,
+            is_issue: 1,
+            issued_list: [],
+            is_coupon: 0
+          })
+          this.getIssuedList(1,1);
+          return;
           var that = this;
           if(wx.getStorageSync('user_boss_id')){
             that.setData({
@@ -983,7 +994,7 @@ Page({
           })
         }
       }
-      if(this.data.index == 1 || this.data.index == 4){
+      if(this.data.index == 1 || this.data.index == 2){
         // +'&certId='+this.data.issued_list[index].certId
         wx.navigateTo({
           url: '/pages/couponDetail/index?src='+this.data.issued_list[index].imageNum+'&id='+this.data.issued_list[index].idKey
@@ -1061,7 +1072,7 @@ Page({
         {icon: '/assets/nav_icon6.png',title: '促销券发行'},
         // {icon: '/assets/nav_icon1.png',title: '代金券代理'},
         // {icon: '/assets/nav_icon2.png',title: '代金券编辑'},
-        // {icon: '/assets/nav_icon6.png',title: '代金券发行'},
+        // {icon: '/assets/nav_icon6.png',title: '教师券发行'},
         // {icon: '/assets/nav_icon8.png',title: '我的代理人'},
         // {icon: '/assets/nav_icon7.png',title: '促销券收益'},
         // {icon: '/assets/search.svg',title: '搜索代理人'}

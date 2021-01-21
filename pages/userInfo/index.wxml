@@ -29,6 +29,7 @@
     <!-- <van-cell is-link title="我的代金券" data-url="/pages/myBuyCoupon/index?type=1" bindtap="pageTo" /> -->
     <!-- <van-cell is-link title="我的代金券" bindtap="toMiniprogram" /> -->
     <van-cell is-link title="我的记录" data-url="/pages/couponUseList/index" bindtap="pageTo" />
+    <van-cell is-link title="我的评价" data-url="/pages/evalutionList/index" bindtap="pageTo" />
     <!-- <van-cell is-link title="我的二维码" bindtap="previewCode" /> -->
     <!-- <van-cell icon="/assets/video.svg" is-link title="我的视频" link-type="navigateTo" url="/pages/myVideo/index" /> -->
     <!-- <van-cell icon="/assets/protocol.svg" is-link title="法律条文与隐私协议" link-type="navigateTo" url="/pages/protocol/index" /> -->

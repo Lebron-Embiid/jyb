@@ -103,3 +103,20 @@ button::after{
   font-size: 28rpx;
   margin-bottom: 10rpx;
 }
+
+radio-group{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.weui-cell{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 30rpx;
+  font-size: 24rpx;
+}
+.weui-cell radio{
+  transform: scale(0.7);
+}

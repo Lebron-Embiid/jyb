@@ -642,9 +642,13 @@ Page({
     let data = {
       pageNum: this.data.page1,
       pageSize: 5,
-      couponType: 0,
+      // couponType: 0,
       consumerId: wx.getStorageSync('userInfo').unionId
     }
+    // if(wx.getStorageSync('room_role'+wx.getStorageSync('room_id')) == 11){
+    //   // 教师
+    //   data.couponType = 1
+    // }
     if(status == 0){
       // data.accept = 0;
       querySellSuccessCouponImgList(data).then(lookres=>{
@@ -665,7 +669,10 @@ Page({
       //   data.count = 0;
       // }
       data.accept = 1;
-      // data.couponType = 1;
+      // if(wx.getStorageSync('room_role'+wx.getStorageSync('room_id')) == 11){
+      //   // 教师
+      //   data.couponType = 1
+      // }
       querySellSuccessCouponImgList(data).then(lookres=>{
         if(lookres.code == 200){
           if(this.data.page1 == 1){

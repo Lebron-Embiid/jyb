@@ -1,6 +1,6 @@
 // pages/couponUseList/index.js
 import {
-  query_consumer_user_coupon_list
+  queryUserVoteDetailByMenuId
 } from '../../api/user.js'
 Page({
 
@@ -12,13 +12,21 @@ Page({
     nav_active: 0,
     type: 0,//促销券：0  代金券：1
     page: 1,
-    couponList: []
+    couponList: [],
+    user_id: null,
+    menu_id: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(options.user_id){
+      this.setData({
+        menu_id: options.menu_id,
+        user_id: options.user_id
+      })
+    }
     this.getCouponList(0);
   },
   /**
@@ -44,21 +52,21 @@ Page({
     this.getCouponList(index);
   },
   getCouponList(index){
-    query_consumer_user_coupon_list({
-      pageNum: this.data.page,
-      pageSize: 20,
-      // couponType: index
-    }).then((res)=>{
+    let data = {}
+    if(this.data.menu_id){
+      data.menuId = this.data.menu_id
+    }
+    if(this.data.user_id){
+      data.userId = this.data.user_id
+    }else{
+      data.userId = wx.getStorageSync('userInfo').unionId
+    }
+    console.log(this.data.menu_id,JSON.stringify(data))
+    queryUserVoteDetailByMenuId(data).then((res)=>{
       if(res.code == 200){
-        if(this.data.page == 1){
-          this.setData({
-            couponList: res.data.records
-          })
-        }else{
-          this.setData({
-            couponList: this.data.couponList.concat(res.data.records)
-          })
-        }
+        this.setData({
+          couponList: res.data
+        })
       }
     })
   },
